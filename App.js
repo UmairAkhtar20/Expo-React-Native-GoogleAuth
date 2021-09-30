@@ -11,46 +11,6 @@ import Home from './screens/Home'
 
 
 const Stack =createStackNavigator();
-const signInWithGoogleAsync=async ()=>{
-  
-  try {
-    const result = await Google.logInAsync({
-      behavior:"web",
-      androidClientId:`844866902004-un7qqgtprvlcjko5994brs66jtmdp1m8.apps.googleusercontent.com`,
-      iosClientId:`844866902004-p5a01gegc8cbk7iuovpd64u8mk48k8bh.apps.googleusercontent.com`,
-      scopes: ['profile', 'email'],
-    });
-
-    if (result.type === 'success') {
-      return result.accessToken;
-    } else {
-      return { cancelled: true };
-    }
-  } catch (e) {
-    return { error: true };
-  }
-
-}
-const handlesign=()=>{
-  const config={
-    expoClientId: `844866902004-u6e4blme1c8c1th8fk6ne0kbn52chqvb.apps.googleusercontent.com`,
-    androidClientId: `844866902004-un7qqgtprvlcjko5994brs66jtmdp1m8.apps.googleusercontent.com`,
-    iosClientId: `844866902004-p5a01gegc8cbk7iuovpd64u8mk48k8bh.apps.googleusercontent.com`,
-    scopes: ['profile', 'email'],
-  }
-
-  Google
-  .logInAsync(config)
-  .then((result)=>{
-    const {type,user}=result;
-    if (type == 'success') {
-      alert("this is us")
-    } else {
-      console.log("error")
-    }
-  })
-  .catch(error=>{console.log(error)})
-}
 
 
 export default function App() {
